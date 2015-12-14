@@ -1,0 +1,21 @@
+using System;
+
+class DecimalToBinaryNumber
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter an integer number, please");
+        long numDec = long.Parse(Console.ReadLine());
+        int rem;
+        string sBin = null;
+
+        do
+        {
+            rem = (int)(numDec % 2);
+            sBin = rem.ToString() + sBin;
+            numDec = numDec / 2;
+        }
+        while (numDec > 0);
+        Console.WriteLine(sBin);
+    }
+}
