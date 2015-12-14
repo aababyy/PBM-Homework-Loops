@@ -1,0 +1,26 @@
+using System;
+
+class FourFactors
+{
+    static void Main()
+    {
+        uint fieldGoals = uint.Parse(Console.ReadLine());
+        uint fieldGoalsAtt = uint.Parse(Console.ReadLine());
+        uint poin3tFieldGoals = uint.Parse(Console.ReadLine());
+        uint turnovers = uint.Parse(Console.ReadLine());
+        uint offensiveReb = uint.Parse(Console.ReadLine());
+        uint oppDRB = uint.Parse(Console.ReadLine());
+        uint ft = uint.Parse(Console.ReadLine());
+        uint fta = uint.Parse(Console.ReadLine());
+
+        double eFGPerc = ((double)fieldGoals + (0.5 * (double)poin3tFieldGoals)) / (double)fieldGoalsAtt;
+        double tovPerc = (double)turnovers / ((double)fieldGoalsAtt + (0.44 * (double)fta) + (double)turnovers);
+        double orbPerc = (double)offensiveReb / ((double)offensiveReb + (double)oppDRB);
+        double ftPerc = (double)ft / (double)fieldGoalsAtt;
+
+        Console.WriteLine("eFG% {0:F3}", eFGPerc);
+        Console.WriteLine("TOV% {0:F3}", tovPerc);
+        Console.WriteLine("ORB% {0:F3}", orbPerc);
+        Console.WriteLine("FT% {0:F3}", ftPerc);
+    }
+}
