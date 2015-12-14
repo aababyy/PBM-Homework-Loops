@@ -1,0 +1,52 @@
+using System;
+
+class DetectiveBoev
+{
+    static void Main()
+    {
+        string sword = Console.ReadLine();
+        string messageE = Console.ReadLine();
+
+        char[] messE = messageE.ToCharArray();
+
+        int sum = 0;
+        for (int i = 0; i < sword.Length; i++)
+        {
+            sum = sum + (int)sword[i];
+        }
+
+        string sumString = sum.ToString();
+        sum = 0;
+
+        while (sumString.Length > 1)
+        {
+            for (int i = 0; i < sumString.Length; i++)
+            {
+                sum = sum + (sumString[i] - '0');
+            }
+
+            sumString = sum.ToString();
+            sum = 0;
+        }
+
+        sum = int.Parse(sumString);
+
+        for (int i = 0; i < messE.Length; i++)
+        {
+            if ((int)messE[i] % sum == 0)
+            {
+                messE[i] = (char)((int)messE[i] + sum);
+            }
+            else
+            {
+                messE[i] = (char)((int)messE[i] - sum);
+            }
+        }
+
+        for (int i = messE.Length - 1; i >= 0; i--)
+        {
+            Console.Write(messE[i]);
+        }
+        Console.WriteLine();
+    }
+}
