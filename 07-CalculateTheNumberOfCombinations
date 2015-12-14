@@ -1,0 +1,33 @@
+using System;
+using System.Numerics;
+
+class CalculateTheNumberOfCombinations
+{
+    static void Main()
+    {
+        Console.Write("n= ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("k= ");
+        int k = int.Parse(Console.ReadLine());
+
+        BigInteger nF = 1;
+        BigInteger kF = 1;
+        BigInteger nkF = 1;
+
+        for (int i = 2; i <= n; i++)
+        {
+            nF *= i;
+
+            if (i <= k)
+            {
+                kF *= i;
+            }
+
+            if (i <= (n - k))
+            {
+                nkF *= i;
+            }
+        }
+        Console.WriteLine(nF / (kF * nkF));
+    }
+}
