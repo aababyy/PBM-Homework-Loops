@@ -1,0 +1,30 @@
+using System;
+
+class RandomizeTheNumbers1N
+{
+    static void Main()
+    {
+        Console.Write("n= ");
+        int n = int.Parse(Console.ReadLine());
+
+        Random r = new Random();
+        int[] nr = new int[n];
+
+        for (int current = n; current > 0;)
+        {
+            int i = r.Next(0, (n));
+
+            if (nr[i] == 0)
+            {
+                nr[i] = current;
+                current--;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        Array.ForEach(nr, x => Console.Write(x + " "));
+        Console.WriteLine();
+    }
+}
