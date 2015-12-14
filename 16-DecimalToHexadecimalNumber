@@ -1,0 +1,31 @@
+using System;
+
+class DecimalToHexadecimalNumber
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter an integer number, please");
+        long numDec = long.Parse(Console.ReadLine());
+        int rem;
+        string sHex = null;
+
+        do
+        {
+            rem = (int)(numDec % 16);
+            switch (rem)
+            {
+                case 10: sHex = "A" + sHex; break;
+                case 11: sHex = "B" + sHex; break;
+                case 12: sHex = "C" + sHex; break;
+                case 13: sHex = "D" + sHex; break;
+                case 14: sHex = "E" + sHex; break;
+                case 15: sHex = "F" + sHex; break;
+                default:
+                    sHex = rem.ToString() + sHex; break;
+            }
+            numDec = numDec / 16;
+        }
+        while (numDec > 0);
+        Console.WriteLine(sHex);
+    }
+}
