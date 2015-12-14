@@ -1,0 +1,26 @@
+using System;
+using System.Numerics;
+
+class CalculateNFdivKF
+{
+    static void Main()
+    {
+        Console.Write("n= ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("k= ");
+        int k = int.Parse(Console.ReadLine());
+
+        BigInteger nF = 1;
+        BigInteger kF = 1;
+
+        for (int i = 1; i <= n; i++)
+        {
+            nF *= i;
+            if (i <= k)
+            {
+                kF *= i;
+            }
+        }
+        Console.WriteLine(nF / kF);
+    }
+}
