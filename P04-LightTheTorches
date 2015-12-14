@@ -1,0 +1,73 @@
+using System;
+
+class LightTheTorches
+{
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        string light = Console.ReadLine();
+        char[] rooms = new char[n];
+        int count = 0;
+
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            if (count >= light.Length)
+            {
+                count = 0;
+            }
+            rooms[i] = light[count];
+            count = count + 1;
+        }
+
+        string line = Console.ReadLine();
+        int pos = (n / 2);
+        while (!line.Equals("END"))
+        {
+            string[] com = line.Split(' ');
+
+            if (((pos == 0) && ((com[0] == "LEFT")) || ((pos == rooms.Length - 1) && ((com[0] == "RIGHT")))))
+            {
+                continue;
+            }
+
+            if (com[0] == "LEFT")
+            {
+                pos = pos - (int.Parse(com[1]) + 1);
+            }
+            else
+            {
+                pos = pos + (int.Parse(com[1]) + 1);
+            }
+
+            if (pos < 0)
+            {
+                pos = 0;
+            }
+            if (pos >= rooms.Length - 1)
+            {
+                pos = rooms.Length - 1;
+            }
+
+            if (rooms[pos] == 'L')
+            {
+                rooms[pos] = 'D';
+            }
+            else
+            {
+                rooms[pos] = 'L';
+            }
+
+            line = Console.ReadLine();
+        }
+
+        count = 0;
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            if (rooms[i] == 'D')
+            {
+                count = count + 1;
+            }
+        }
+        Console.WriteLine(count * (int)'D');
+    }
+}
