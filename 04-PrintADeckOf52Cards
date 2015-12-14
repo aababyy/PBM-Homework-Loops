@@ -1,0 +1,20 @@
+using System;
+using System.Text;
+
+class PrintADeckOf52Cards
+{
+    static void Main()
+    {
+        Console.OutputEncoding = Encoding.UTF8;
+
+        string[] faces = {"", "", "2", "3", "4", "5", "6", "7",  "8", "9", "10", "J", "Q", "K", "A"};
+        for (int i = 2; i < faces.Length; i++)
+        {
+            Console.Write(faces[i] + '\u2663' + "\t"
+                + faces[i] + '\u2666' + "\t"
+                + faces[i] + '\u2665' + "\t"
+                + faces[i] + '\u2660');
+            Console.WriteLine();
+        }
+    }
+}
