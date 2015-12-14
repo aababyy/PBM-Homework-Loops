@@ -1,0 +1,21 @@
+using System;
+
+class CalculateGCD
+{
+    static void Main()
+    {
+        Console.Write("a= ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("b= ");
+        int b = int.Parse(Console.ReadLine());
+        int temp;
+
+        while (b != 0)
+        {
+            temp = b;
+            b = a % b;
+            a = temp;
+        }
+        Console.WriteLine("GCD(a, b) = " + a);
+    }
+}
