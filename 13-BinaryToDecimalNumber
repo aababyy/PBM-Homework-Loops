@@ -1,0 +1,21 @@
+using System;
+
+class BinaryToDecimalNumber
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter a binary integer number, please");
+        string sBin = Console.ReadLine();
+        long numDec;
+        long sumDec = 0;
+        int pow2 = 1;
+        
+        for (int i = sBin.Length-1; i >= 0; i--)
+        {
+            numDec = (sBin[i] - 48) * pow2;
+            sumDec = sumDec + numDec;
+            pow2 = pow2 * 2;
+        }
+        Console.WriteLine(sumDec);
+    }
+}
