@@ -1,0 +1,61 @@
+using System;
+
+class WiggleWiggle
+{
+    static void Main()
+    {
+        string[] numbers = Console.ReadLine().Split(' ');
+        ulong[] num = new ulong[numbers.Length];
+        for (int i = 0; i < num.Length; i++)
+        {
+            num[i] = UInt64.Parse(numbers[i]);
+        }
+
+        for (int i = 0; i < num.Length; i += 2)
+        {
+            string bin1 = Convert.ToString((long)num[i], 2).PadLeft(63, '0');
+            string bin2 = Convert.ToString((long)num[i + 1], 2).PadLeft(63, '0');
+            char[] binChar1 = bin1.ToCharArray();
+            char[] binChar2 = bin2.ToCharArray();
+
+            for (int j = 0; j < binChar1.Length; j += 2)
+            {
+                char buffer = binChar2[j];
+                binChar2[j] = binChar1[j];
+                binChar1[j] = buffer;
+            }
+
+            for (int j = 0; j < binChar1.Length; j++)
+            {
+                if (binChar1[j] == '0')
+                {
+                    binChar1[j] = '1';
+                }
+                else //(binChar1[j] == '1')
+                {
+                    binChar1[j] = '0';
+                }
+
+                if (binChar2[j] == '0')
+                {
+                    binChar2[j] = '1';
+                }
+                else //(binChar2[j] == '1')
+                {
+                    binChar2[j] = '0';
+                }
+            }
+
+            bin1 = new string(binChar1);
+            bin2 = new string(binChar2);
+
+            Console.Write(Convert.ToUInt64(bin1, 2) + " ");
+            Array.ForEach(binChar1, x => Console.Write((x)));
+            Console.WriteLine();
+
+            Console.Write(Convert.ToUInt64(bin2, 2) + " ");
+            Array.ForEach(binChar2, x => Console.Write((x)));
+            Console.WriteLine();
+        }
+    }
+}
